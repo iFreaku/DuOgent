@@ -278,13 +278,13 @@ The `static/` folder is where HTML outputs get saved. On ephemeral filesystems (
 
 <p align="center">
   <strong>Stop fixing AI output manually. Let two agents argue about it instead.</strong><br/>
-  <a href="#getting-started"><strong>🏁 Get Started</strong></a> · <a href="https://pollinations.ai"><strong>⬡ Pollinations.ai</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>🐛 Report a Bug</strong></a>
+  <a href="#getting-started"><strong>🏁 Get Started</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>🐛 Report a Bug</strong></a>
 </p>
 
 ---
 
 <p align="center">
-  <a href="LICENSE"><strong>License</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>Issues</strong></a> · <a href="https://pollinations.ai"><strong>Powered by Pollinations.ai</strong></a>
+  <a href="LICENSE"><strong>License</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>Issues</strong></a>
 </p>
 
 <p align="center">
