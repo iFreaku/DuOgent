@@ -1,114 +1,186 @@
-<div align="center">
+<a name="top"></a>
 
-# 🤖 DuOgent
+<p align="center">
+  <img src="https://img.shields.io/badge/%F0%9F%A4%96-DuOgent-e8ff47?style=for-the-badge&labelColor=1a1a1a" alt="DuOgent Logo" />
+</p>
 
-### *Two agents. One plans. One executes. Both argue.*
+<h1 align="center">DuOgent</h1>
+<h3 align="center">Two agents. One plans. One executes. Both argue.</h3>
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)](https://python.org)
-[![Flask](https://img.shields.io/badge/Flask-SSE-black?style=flat-square&logo=flask)](https://flask.palletsprojects.com)
-[![Pollinations](https://img.shields.io/badge/Powered%20by-Pollinations.ai-e8ff47?style=flat-square)](https://pollinations.ai)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+<p align="center">
+  <strong>A dual-agent AI system where one model breaks down your task, another executes each step, and neither stops until the output is actually good.</strong>
+</p>
 
-</div>
+<p align="center">
+  <sub>DuOgent combines planning, execution, review loops, and real-time streaming into one self-correcting AI pipeline — powered entirely by Pollinations.ai.</sub>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Flask-SSE%20Streaming-black?style=for-the-badge&logo=flask" alt="Flask" />
+  <img src="https://img.shields.io/badge/Powered%20by-Pollinations.ai-e8ff47?style=for-the-badge&labelColor=1a1a1a" alt="Pollinations" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/iFreaku/DuOgent/stargazers"><img src="https://img.shields.io/github/stars/iFreaku/DuOgent?style=for-the-badge&color=f5c542&logo=github" alt="Stars" /></a>
+  <a href="https://github.com/iFreaku/DuOgent/network/members"><img src="https://img.shields.io/github/forks/iFreaku/DuOgent?style=for-the-badge&color=4a90d9" alt="Forks" /></a>
+  <a href="https://github.com/iFreaku/DuOgent/issues"><img src="https://img.shields.io/github/issues/iFreaku/DuOgent?style=for-the-badge&color=d94a4a" alt="Issues" /></a>
+  <img src="https://img.shields.io/github/last-commit/iFreaku/DuOgent?style=for-the-badge&color=e8ff47&labelColor=1a1a1a" alt="Last Commit" />
+</p>
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,flask,html,css,js" alt="Tech Stack" />
+</p>
 
 ---
 
-> *"It's not who I am underneath, but what I do that defines me."*
-> — Batman Begins
+## 🧭 Quick Navigation
 
-What DuOgent **does**: it takes your task, splits it into steps, has one AI execute each step, and another AI reject it until it's actually good.
-
-What it **is** underneath: two language models in a loop, yelling at each other on your behalf.
+- [🎯 What Is DuOgent?](#what-is-duogent)
+- [💡 The Idea](#the-idea)
+- [⚙️ How the Loop Works](#how-the-loop-works)
+- [🚀 What Can It Do?](#what-can-it-do)
+- [✨ Features](#features)
+- [⬡ BYOP — Bring Your Own Pollen](#byop)
+- [🏁 Getting Started](#getting-started)
+- [🗂️ Project Structure](#project-structure)
+- [📦 Stack](#stack)
+- [🌐 Deployment](#deployment)
 
 ---
 
-## The Idea
+<a id="what-is-duogent"></a>
 
-Every AI tool gives you one shot. You type, it responds, you get something that's *almost* right but not quite, and now you're copy-pasting it into another prompt to fix it.
+## 🎯 What Is DuOgent?
+
+DuOgent is a **dual-agent AI pipeline** built for tasks that are too important to get right on the first try.
+
+It takes your task, splits it into the minimum number of steps needed, has one AI execute each step, and another AI reject it until it's actually good. No one-shot guessing. No silent failures. Just a self-correcting loop that argues until the output is worth using.
+
+- 🧠 **Agent 1 — Planner/Reviewer:** The uptight one. Decomposes your task into focused steps, then reviews every output like a senior dev on a Friday afternoon.
+- ⚡ **Agent 2 — Executor:** The one that does the work. Gets the full context — original task, complete plan, current step, and any critique from the last attempt. No excuses.
+- 📡 **Real-time streaming:** Watch every step execute live via Server-Sent Events. Nothing happens behind the scenes.
+- ⬡ **BYOP:** Users connect their own Pollinations.ai account. You host the app, they cover the AI costs. $0 for you.
+
+**Best fit:** Developers, writers, researchers, and anyone who's tired of copy-pasting AI output into another prompt to fix it.
+
+### How the Pipeline Flows
+
+```mermaid
+flowchart LR
+    classDef input fill:#e8ff47,stroke:#1a1a1a,stroke-width:2px,color:#111
+    classDef agent fill:#d7e8a8,stroke:#4a7c23,stroke-width:2px,color:#111
+    classDef loop fill:#b9d7f4,stroke:#356b95,stroke-width:2px,color:#111
+    classDef output fill:#f0d8a8,stroke:#9b6a1d,stroke-width:2px,color:#111
+
+    T["📝 Your Task"]:::input
+    P["🧠 Agent 1\nPlanning Mode\nDecompose into steps"]:::agent
+    E["⚡ Agent 2\nExecution Mode\nExecute current step"]:::agent
+    R["🧠 Agent 1\nReview Mode\nApprove or critique"]:::agent
+    D{"✅ Approved?"}:::loop
+    C["🧠 Agent 1\nCompile Mode\nSynthesize final answer"]:::agent
+    O["📤 Final Answer"]:::output
+
+    T --> P --> E --> R --> D
+    D -->|"No — retry with critique"| E
+    D -->|"Yes — next step"| E
+    D -->|"All steps done"| C --> O
+```
+
+---
+
+<a id="the-idea"></a>
+
+## 💡 The Idea
+
+Every AI tool gives you one shot. You type, it responds, you get something that's *almost* right — and now you're copy-pasting it into another prompt to fix it.
 
 DuOgent automates that entire exhausting back-and-forth by making two agents do it instead of you.
 
-**Agent 1 — The Planner/Reviewer**
-The uptight one. Breaks your task into the minimum number of steps possible. Then sits there reviewing every piece of output like a senior dev on a Friday afternoon code review.
+> *"It's not who I am underneath, but what I do that defines me."* — Batman Begins
 
-**Agent 2 — The Executor**
-The one that actually does the work. Gets the full picture — original task, full plan, current step, and any critique from the last attempt. No excuses for "I didn't know what you wanted."
+Agent 2 always sees the **original task** and the **full plan**. Not just `"write the HTML structure"` with zero context. It knows what it's building, why, and where this step fits. Agent 1 won't let it get away with a half-baked output — it reviews every result and sends it back with a specific critique if it's not good enough.
 
-The loop runs until Agent 1 approves the work or the retry limit hits. Either way, you get a compiled final answer at the end.
-
-> *"That's not flying. That's falling with style."* — Toy Story
+The loop runs until Agent 1 approves or the retry limit hits. Either way, you get a compiled, synthesized final answer at the end.
 
 ---
 
-## What can it actually do?
+<a id="how-the-loop-works"></a>
 
-### 🖥️ Build web apps
-Ask it to build a todo app, a calculator, a landing page. Agent 2 writes the code, Agent 1 reviews it, and if the output is a single-file HTML — it auto-saves to `/static` and renders in a live iframe preview inside the UI. You can preview it, resize it, or download it directly.
-
-### 📝 Long-form writing
-Blog posts, technical docs, research articles, product specs. The planner breaks it into sections, the executor writes each one with full memory of what came before.
-
-### 🔬 Multi-step research
-*"Explain transformer architecture, its evolution, and current limitations."* Not a one-shot prompt. A plan. DuOgent handles it like one.
-
-### 📧 Content pipelines
-Email sequences, onboarding flows, social copy. Each piece reviewed before the next one starts.
-
-### 💻 Code generation
-Scripts, components, utilities. Agent 1 actually checks if the code is coherent before you ever see it.
-
----
-
-## How the loop works
+## ⚙️ How the Loop Works
 
 ```
 Your task
     │
     ▼
-Agent 1 makes a plan
+Agent 1 — Planning Mode
+    Breaks task into minimum necessary steps
     │
     ▼ for each step...
     │
-    ├─► Agent 2 executes
-    │       (full task + full plan + current step + any critique)
+    ├─► Agent 2 — Execution Mode
+    │       Full task + full plan + current step + any critique
     │
-    ├─► Agent 1 reviews
-    │       ├── "approved" → next step
-    │       └── "fix this specific thing" → Agent 2 tries again
+    ├─► Agent 1 — Review Mode
+    │       ├── "approved" → move to next step
+    │       └── "fix this specific thing" → Agent 2 retries
     │
-    ▼ all steps done
-Agent 1 compiles everything into one final answer
+    ▼ all steps approved
+Agent 1 — Compile Mode
+    Synthesizes all results into one final answer
 ```
 
-Agent 2 always sees the **original task** and the **full plan**. Not just "write the HTML structure" with zero context. It knows what it's building, why, and where this step fits.
+<p align="right"><a href="#top">⬆️ Back to top</a></p>
 
 ---
 
-## Features
+<a id="what-can-it-do"></a>
 
-- ⬡ **BYOP** — Bring Your Own Pollen. Users connect their own [Pollinations.ai](https://pollinations.ai) account. You host the app, they cover the AI costs. $0 for you.
-- 🎛️ **Per-agent model selection** — different model for Agent 1 and Agent 2. Run a smart planner and a fast executor.
-- 📡 **Real-time streaming** — watch every step execute live via Server-Sent Events
-- 🗂️ **Step tracker** — sidebar shows every step with live status (running / approved / retrying / forced)
-- 💾 **HTML auto-save** — generated web apps saved to `/static`, previewed in iframe, downloadable
-- 🔒 **localStorage** — your key, models, and all settings survive page refreshes
-- ⚙️ **Param toggles** — enable/disable Temperature, Top P, Presence/Frequency Penalty individually (avoids the "can't use both" API error)
-- 📱 **Mobile responsive** — hamburger menu, slide-in sidebar, works on phone
-- ✕ **Cancel mid-run** — AbortController stops the stream instantly
+## 🚀 What Can It Do?
+
+### 🖥️ Build Web Apps
+Ask it to build a todo app, a calculator, a landing page. Agent 2 writes the code, Agent 1 reviews it — and if the output is a single-file HTML, it **auto-saves to `/static`** and renders in a live iframe preview inside the UI. Preview it, resize it, download it.
+
+### 📝 Long-Form Writing
+Blog posts, technical docs, research articles, product specs. The planner breaks it into sections, the executor writes each one with full memory of what came before.
+
+### 🔬 Multi-Step Research
+*"Explain transformer architecture, its evolution, and current limitations."* Not a one-shot prompt. A structured plan with reviewed steps.
+
+### 📧 Content Pipelines
+Email sequences, onboarding flows, social copy. Each piece reviewed before the next one starts.
+
+### 💻 Code Generation
+Scripts, components, utilities. Agent 1 actually checks if the code is coherent before you ever see it.
 
 ---
 
-## Powered by Pollinations.ai
+<a id="features"></a>
 
-DuOgent runs on **[Pollinations.ai](https://pollinations.ai)** — free, open AI inference with access to models from OpenAI, Google Gemini, Mistral, DeepSeek, and more. No separate accounts for each provider. One platform.
+## ✨ Features
 
-### ⬡ BYOP — Bring Your Own Pollen
+- ⬡ **BYOP** — Bring Your Own Pollen. Users connect their own [Pollinations.ai](https://pollinations.ai) account. You host the app, they cover AI costs. $0 for you.
+- 🎛️ **Per-agent model selection** — different model for Agent 1 and Agent 2. Run a smart planner with a fast executor.
+- 📡 **Real-time streaming** — watch every step execute live via Server-Sent Events.
+- 🗂️ **Step tracker** — sidebar shows every step with live status: running / approved / retrying / forced.
+- 💾 **HTML auto-save** — generated web apps saved to `/static`, previewed in iframe, downloadable.
+- 🔒 **localStorage persistence** — your key, models, and all settings survive page refreshes.
+- ⚙️ **Param toggles** — enable/disable Temperature, Top P, Presence/Frequency Penalty individually.
+- 📱 **Mobile responsive** — hamburger menu, slide-in sidebar, works on phone.
+- ✕ **Cancel mid-run** — AbortController stops the stream instantly.
 
-> *"Why are you trying to hit me? Hit the target!"* — The Last Samurai
+<p align="right"><a href="#top">⬆️ Back to top</a></p>
 
-The target is: your users pay for their own AI usage. You pay nothing.
+---
 
-BYOP is Pollinations' auth flow that makes this happen. Users click **Connect with Pollinations**, sign in, approve access, and get redirected back to DuOgent with a key in the URL fragment (never hits server logs). The app picks it up, saves it to localStorage, and they're ready to run.
+<a id="byop"></a>
+
+## ⬡ BYOP — Bring Your Own Pollen
+
+DuOgent runs on **[Pollinations.ai](https://pollinations.ai)** — free, open AI inference with access to models from OpenAI, Google Gemini, Mistral, DeepSeek, and more.
+
+BYOP is Pollinations' auth flow that makes zero-cost hosting possible. Users click **Connect with Pollinations**, sign in, approve access, and get redirected back with a key in the URL fragment (never hits server logs). The app picks it up, saves it to localStorage, and they're ready to run.
 
 ```javascript
 // Optional: set your publishable key so the consent screen
@@ -118,9 +190,13 @@ const BYOP_APP_KEY = 'pk_yourkey'; // in templates/index.html
 
 Register yours at [enter.pollinations.ai](https://enter.pollinations.ai).
 
+> *"Why are you trying to hit me? Hit the target!"* — The Last Samurai
+
 ---
 
-## Getting started
+<a id="getting-started"></a>
+
+## 🏁 Getting Started
 
 ```bash
 git clone https://github.com/iFreaku/DuOgent.git
@@ -135,7 +211,9 @@ Open `http://localhost:5000`. Click **⬡ Connect with Pollinations** or paste a
 
 ---
 
-## Project structure
+<a id="project-structure"></a>
+
+## 🗂️ Project Structure
 
 ```
 DuOgent/
@@ -149,40 +227,54 @@ DuOgent/
 
 No node_modules. No webpack config. No `.env` to figure out. Just Python and one HTML file.
 
+<p align="right"><a href="#top">⬆️ Back to top</a></p>
+
 ---
 
-## Stack
+<a id="stack"></a>
 
-| | |
+## 📦 Stack
+
+| Layer | Technology |
 |---|---|
 | Backend | Python + Flask |
 | Streaming | Server-Sent Events |
 | Frontend | HTML + CSS + Vanilla JS |
-| AI inference | [Pollinations.ai](https://pollinations.ai) |
+| AI Inference | [Pollinations.ai](https://pollinations.ai) |
 | Markdown rendering | marked.js |
 | Syntax highlighting | highlight.js |
 | Fonts | IBM Plex Mono + Syne |
 
 ---
 
-## Deployment
+<a id="deployment"></a>
+
+## 🌐 Deployment
 
 Works on Railway, Render, Heroku — anything that runs Python.
 
-The `static/` folder is where HTML outputs get saved. On ephemeral filesystems (like Heroku's free dynos), those files won't persist across restarts. If that matters for your use case, swap the file write in `server.py` with an S3 upload.
+**Recommended start command for Render:**
+```
+gunicorn server:app --worker-class gthread --threads 4 --timeout 600 -b 0.0.0.0:$PORT
+```
+
+The `static/` folder is where HTML outputs get saved. On ephemeral filesystems (like Heroku's free dynos), files won't persist across restarts. If that matters, swap the file write in `server.py` with an S3 upload.
+
+<p align="right"><a href="#top">⬆️ Back to top</a></p>
 
 ---
 
-## License
-
-MIT. Do what you want.
+<p align="center">
+  <strong>Stop fixing AI output manually. Let two agents argue about it instead.</strong><br/>
+  <a href="#getting-started"><strong>🏁 Get Started</strong></a> · <a href="https://pollinations.ai"><strong>⬡ Pollinations.ai</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>🐛 Report a Bug</strong></a>
+</p>
 
 ---
 
-<div align="center">
+<p align="center">
+  <a href="LICENSE"><strong>License</strong></a> · <a href="https://github.com/iFreaku/DuOgent/issues"><strong>Issues</strong></a> · <a href="https://pollinations.ai"><strong>Powered by Pollinations.ai</strong></a>
+</p>
 
-*Built on [Pollinations.ai](https://pollinations.ai) — free AI inference for everyone*
-
-> *"Every passing minute is another chance to turn it all around."* — Vanilla Sky
-
-</div>
+<p align="center">
+  <a href="#top">⬆️ Back to top</a>
+</p>
