@@ -76,13 +76,22 @@ flowchart LR
 
     T["📝 Your Task"]:::input
     P["🧠 Agent 1
-      Planning Mode
+Planning Mode
 Decompose into steps"
 ]:::agent
-    E["⚡ Agent 2\nExecution Mode\nExecute current step"]:::agent
-    R["🧠 Agent 1\nReview Mode\nApprove or critique"]:::agent
+    E["⚡ Agent 2
+Execution Mode
+Execute current step"
+]:::agent
+    R["🧠 Agent 1
+    Review Mode
+    Approve or critique"
+]:::agent
     D{"✅ Approved?"}:::loop
-    C["🧠 Agent 1\nCompile Mode\nSynthesize final answer"]:::agent
+    C["🧠 Agent 1
+    Compile Mode
+    Synthesize final answer"
+]:::agent
     O["📤 Final Answer"]:::output
 
     T --> P --> E --> R --> D
