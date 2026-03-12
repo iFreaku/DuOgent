@@ -75,7 +75,8 @@ flowchart LR
     classDef output fill:#f0d8a8,stroke:#9b6a1d,stroke-width:2px,color:#111
 
     T["📝 Your Task"]:::input
-    P["🧠 Agent 1\nPlanning Mode\nDecompose into steps"]:::agent
+    P["🧠 Agent 1
+Planning Mode\nDecompose into steps"]:::agent
     E["⚡ Agent 2\nExecution Mode\nExecute current step"]:::agent
     R["🧠 Agent 1\nReview Mode\nApprove or critique"]:::agent
     D{"✅ Approved?"}:::loop
