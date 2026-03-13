@@ -24,10 +24,9 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 *{scrollbar-width:thin;scrollbar-color:var(--border-hi) transparent}
 ::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-thumb{background:var(--border-hi)}
 
-/* LAYOUT */
 .layout{display:grid;grid-template-columns:var(--sw) 1fr;grid-template-rows:var(--th) 1fr;height:100vh}
 
-/* TOPBAR */
+
 .topbar{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);background:var(--surface);gap:10px;z-index:50;flex-shrink:0}
 .logo{font-family:var(--sans);font-size:18px;font-weight:800;letter-spacing:-.5px;color:#fff;flex-shrink:0}
 .logo em{color:var(--accent);font-style:normal}
@@ -40,13 +39,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .hamburger{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:5px 9px;cursor:pointer;border-radius:2px;font-size:15px;line-height:1}
 
-/* SIDEBAR */
+
 .sidebar{border-right:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow:hidden;transition:transform .25s ease}
 .sb-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column}
 .s-sec{padding:12px 14px;border-bottom:1px solid var(--border)}
 .s-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
 
-/* INPUTS */
+
 .inp{width:100%;background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:11px;padding:7px 10px;border-radius:2px;outline:none;transition:border-color .2s}
 .inp:focus{border-color:var(--accent)}
 .inp::placeholder{color:var(--dim)}
@@ -54,7 +53,7 @@ select.inp{cursor:pointer;appearance:none}
 .key-row{display:flex;gap:6px;align-items:center}
 .bal{font-size:10px;color:var(--muted);white-space:nowrap;min-width:52px;text-align:right}
 .bal.ok{color:var(--accent2)}
-/* BYOP */
+
 .byop-btn{width:100%;padding:9px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.5px;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:8px}
 .byop-btn:hover{background:rgba(232,255,71,.08);box-shadow:0 0 12px rgba(232,255,71,.15)}
 .byop-btn .byop-icon{font-size:13px}
@@ -67,7 +66,7 @@ select.inp{cursor:pointer;appearance:none}
 .model-row{display:flex;flex-direction:column;gap:4px}
 .model-lbl{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 
-/* BUTTONS */
+
 .btn-ref{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;padding:4px 8px;cursor:pointer;border-radius:2px;transition:all .15s}
 .btn-ref:hover{border-color:var(--accent2);color:var(--accent2)}
 .btn-run{width:100%;margin-top:8px;padding:11px;background:var(--accent);color:#0a0a0a;border:none;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;border-radius:2px;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
@@ -81,7 +80,7 @@ select.inp{cursor:pointer;appearance:none}
 .btn-sm.ok{border-color:var(--success);color:var(--success)}
 .btn-sm.ap{border-color:var(--accent2);color:var(--accent2);background:rgba(71,255,232,.05)}
 
-/* ADVANCED */
+
 .adv-tog{width:100%;background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;transition:color .2s}
 .adv-tog:hover{color:var(--text)}
 .adv-tog .caret{transition:transform .2s}
@@ -103,7 +102,7 @@ input[type=range]{-webkit-appearance:none;width:100%;height:2px;background:var(-
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 6px var(--accent)}
 input[type=range].off{opacity:.3;pointer-events:none}
 
-/* TRACKER */
+
 .tr-lbl{padding:10px 14px 4px;border-top:1px solid var(--border);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
 .tr-wrap{padding:6px 14px 10px;display:flex;flex-direction:column;gap:2px}
 .tr-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:11px;color:var(--muted);cursor:pointer;transition:color .2s}
@@ -114,13 +113,12 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .ti{width:12px;text-align:center;flex-shrink:0;font-size:10px}
 .tt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-/* MAIN */
 .main{display:flex;flex-direction:column;overflow:hidden;min-width:0}
 .prog-bar{height:2px;background:var(--border);flex-shrink:0}
 .prog-fill{height:100%;background:var(--accent);transition:width .4s ease;position:relative}
 .prog-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(232,255,71,.8))}
 
-/* TABS */
+
 .tab-bar{display:flex;border-bottom:1px solid var(--border);background:var(--surface);padding:0 4px;flex-shrink:0;overflow-x:auto}
 .tab{padding:0 14px;height:40px;font-size:11px;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--mono);border-bottom:2px solid transparent;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
 .tab:hover{color:var(--text)}
@@ -133,13 +131,13 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .empty-st{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--dim);gap:12px;text-align:center;padding:20px}
 .empty-gl{font-family:var(--sans);font-size:48px;font-weight:800;letter-spacing:-3px;color:var(--border-hi)}
 
-/* PLAN CARD */
+
 .plan-card{border:1px solid var(--border);border-radius:3px;margin-bottom:12px;overflow:hidden}
 .c-hdr{background:var(--panel);padding:8px 12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;transition:color .2s}
 .c-hdr:hover{color:var(--text)}
 .c-hdr .clbl{flex:1}
 .c-hdr .ccaret{transition:transform .2s;font-size:10px}
-/* collapsed = body hidden, caret points right */
+
 .c-hdr.coll .ccaret{transform:rotate(-90deg)}
 .c-body{overflow:hidden}
 .c-body.coll{display:none}
@@ -149,7 +147,7 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .psn{font-size:10px;color:var(--accent);font-weight:600;width:18px;flex-shrink:0;padding-top:1px}
 .pst{font-size:12px;color:var(--text)}
 
-/* EXEC CARD */
+
 .ec{border:1px solid var(--border);border-radius:3px;margin-bottom:10px;overflow:hidden;transition:border-color .3s}
 .ec[data-s=running]{border-color:rgba(232,255,71,.3)}
 .ec[data-s=done]{border-color:rgba(71,255,138,.2)}
@@ -164,7 +162,6 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .ec-tag.forced{background:rgba(255,71,71,.1);color:var(--danger)}
 .ec-att{font-size:10px;color:var(--muted)}
 .ec-caret{font-size:10px;color:var(--muted);transition:transform .2s;flex-shrink:0}
-/* exec card collapse: header gets coll class, body (ec-wrap) gets coll */
 .ec-hdr.coll .ec-caret{transform:rotate(-90deg)}
 .ec-wrap{overflow:hidden}
 .ec-wrap.coll{display:none}
@@ -179,7 +176,6 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .rev-ic{font-size:13px;margin-top:1px;flex-shrink:0}
 .rev-fu{margin-top:3px;font-size:11px;color:var(--muted);font-style:italic}
 
-/* FINAL CARD */
 .fin-card{border:1px solid rgba(232,255,71,.3);border-radius:3px;overflow:hidden;margin-bottom:16px;background:linear-gradient(160deg,rgba(232,255,71,.02) 0%,transparent 60%)}
 .fin-hd{background:rgba(232,255,71,.06);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(232,255,71,.15);cursor:pointer;user-select:none;gap:8px;flex-wrap:wrap}
 .fin-lbl{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
@@ -188,13 +184,11 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .fin-hd.coll .fin-caret{transform:rotate(-90deg)}
 .fin-body{padding:14px 16px;font-size:13px;line-height:1.8;overflow-x:auto}
 
-/* PREVIEW */
 .pv-wrap{border:1px solid var(--border-hi);border-radius:3px;overflow:hidden;margin:4px 14px 14px;background:#fff}
 .pv-bar{background:var(--panel);padding:6px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);font-size:10px;color:var(--muted)}
 .pv-bar-r{display:flex;gap:6px;align-items:center}
 .pv-frame{width:100%;height:420px;border:none;display:block;background:#fff}
 
-/* LOG */
 .log-view{flex:1;overflow-y:auto;padding:10px 14px;font-family:var(--mono);font-size:11px}
 .log-ln{display:flex;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.025);animation:fi .15s ease}
 @keyframes fi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
@@ -203,7 +197,6 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .lk.info{color:var(--accent2)}.lk.success{color:var(--success)}.lk.warn{color:var(--warn)}.lk.error{color:var(--danger)}
 .lm{color:var(--muted);flex:1;word-break:break-all}
 
-/* MARKDOWN */
 .md h1,.md h2,.md h3,.md h4{font-family:var(--sans);color:#fff;margin:14px 0 6px}
 .md h1{font-size:1.3em}.md h2{font-size:1.15em}.md h3{font-size:1.05em}
 .md p{margin:6px 0;word-break:break-word}
@@ -219,10 +212,8 @@ input[type=range].off{opacity:.3;pointer-events:none}
 .md a{color:var(--accent2)}
 .md hr{border:none;border-top:1px solid var(--border);margin:14px 0}
 
-/* OVERLAY */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;backdrop-filter:blur(2px)}
 
-/* MOBILE */
 @media(max-width:768px){
   :root{--th:44px}
   .layout{grid-template-columns:1fr;grid-template-rows:var(--th) 1fr}
@@ -264,11 +255,9 @@ input[type=range].off{opacity:.3;pointer-events:none}
   <aside class="sidebar" id="sidebar">
     <div class="sb-scroll">
 
-      <!-- KEY -->
       <div class="s-sec">
         <div class="s-lbl">API Key <button class="btn-ref" onclick="refreshAll()">↻</button></div>
 
-        <!-- BYOP connected state (hidden by default) -->
         <div class="byop-connected" id="byopConnected" style="display:none">
           <div class="byop-connected-left">
             <span>⬡</span>
@@ -278,12 +267,10 @@ input[type=range].off{opacity:.3;pointer-events:none}
           <button class="byop-disconnect" onclick="disconnectByop()">✕ disconnect</button>
         </div>
 
-        <!-- BYOP connect button (shown when not connected) -->
         <button class="byop-btn" id="byopBtn" onclick="connectByop()">
           <span class="byop-icon">⬡</span> Connect with Pollinations
         </button>
 
-        <!-- Manual key fallback (hidden by default, toggle to show) -->
         <div id="manualKeyWrap" style="display:none">
           <div class="key-row">
             <input class="inp" type="password" id="apiKey" placeholder="sk_..." oninput="onKeyChange()">
@@ -402,20 +389,16 @@ function md(t){if(!t)return'';try{return marked.parse(String(t))}catch(e){return
 function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
 function sv(id,v,dec){document.getElementById(id).textContent=parseFloat(v).toFixed(dec)}
 
-// SIDEBAR
 function toggleSb(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('open')}
 
-// TABS
 function switchTab(n,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-pane').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');document.getElementById('tab-'+n).classList.add('active');
 }
 
-// ADVANCED
 function toggleAdv(){document.getElementById('advTog').classList.toggle('open');document.getElementById('advPanel').classList.toggle('open')}
 
-// COLLAPSIBLE — header gets .coll, body el gets .coll (display:none)
 function collapse(hdr, body){
   hdr.classList.toggle('coll');
   body.classList.toggle('coll');
@@ -425,7 +408,6 @@ function collapse(hdr, body){
 function setStatus(s,t){document.getElementById('statusPill').className='status-pill '+s;document.getElementById('statusText').textContent=t}
 function setProgress(p){document.getElementById('progFill').style.width=p+'%'}
 
-// PARAM TOGGLES
 function toggleP(name,en){
   const m={temp:'tempSl',top_p:'topPSl',pres:'presSl',freq:'freqSl'};
   const sl=document.getElementById(m[name]);if(!sl)return;
@@ -491,7 +473,6 @@ async function refreshAll(){
 }
 
 function setBal(v){
-  // Update whichever balance display is visible
   const elByop=document.getElementById('bal');
   const elManual=document.getElementById('balManual');
   const fmt=v===null||v===undefined?['—','bal']:v==='no permission'?['N/A','bal']:['⬡'+Number(v).toFixed(1),'bal ok'];
@@ -514,12 +495,10 @@ function populateModels(ids){
 
 // HTML EXTRACTION
 function extractHtml(text){
-  // Try ```html fenced blocks first — pick longest with <html
   const re=/```(?:html|HTML)\s*\n([\s\S]*?)```/g;
   let m,best='';
   while((m=re.exec(text))!==null){if(m[1].length>best.length&&m[1].includes('<html'))best=m[1];}
   if(best)return best.trim();
-  // Fallback: bare HTML document in the text
   const bare=text.match(/<!DOCTYPE[\s\S]*?<\/html>/i)||text.match(/<html[\s\S]*?<\/html>/i);
   return bare?bare[0].trim():null;
 }
@@ -562,7 +541,6 @@ function updTracker(idx,status){
   item.className='tr-item '+status;item.querySelector('.ti').textContent=icons[status]||'○';
 }
 
-// FLOW HELPERS
 function appendFlow(el){
   document.getElementById('emptySt')?.remove();
   document.getElementById('flowView').appendChild(el);
@@ -645,7 +623,6 @@ async function renderFinalCard(answer){
   window._htmlCode=htmlCode;
   window._previewUrl=null;
 
-  // Save HTML to static in background so iframe can use it
   if(htmlCode){
     const slug=document.getElementById('taskInput').value.trim().slice(0,30).replace(/[^a-z0-9]/gi,'-').toLowerCase()||'output';
     const url=await saveHtml(htmlCode,slug+'.html');
@@ -657,7 +634,6 @@ async function renderFinalCard(answer){
 }
 
 function togglePreview(){
-  // Remove old preview wrap if exists, rebuild fresh
   const existing=document.getElementById('pvWrap');
   const btn=document.getElementById('previewBtn');
   if(existing){
@@ -668,17 +644,14 @@ function togglePreview(){
   const wrap=document.createElement('div');wrap.className='pv-wrap';wrap.id='pvWrap';
   wrap.innerHTML=`<div class="pv-bar"><span style="color:var(--accent2)">Live Preview</span><div class="pv-bar-r"><button class="btn-sm" onclick="resizePv(280)">S</button><button class="btn-sm" onclick="resizePv(480)">M</button><button class="btn-sm" onclick="resizePv(680)">L</button><button class="btn-sm" onclick="togglePreview()">✕</button></div></div><iframe class="pv-frame" id="pvFrame" sandbox="allow-scripts allow-forms allow-modals allow-same-origin"></iframe>`;
 
-  // Insert after the fin-card
   const finCard=document.querySelector('.fin-card');
   if(finCard&&finCard.parentNode){finCard.parentNode.insertBefore(wrap,finCard.nextSibling);}
   else{document.getElementById('flowView').appendChild(wrap);}
 
   const frame=document.getElementById('pvFrame');
   if(window._previewUrl){
-    // Use saved static file — completely isolated, no srcdoc weirdness
     frame.src=window._previewUrl;
   } else {
-    // Fallback to srcdoc if save hasn't completed yet
     frame.srcdoc=window._htmlCode;
   }
 
@@ -801,8 +774,7 @@ function resetCtrl(){document.getElementById('runBtn').disabled=false;document.g
 document.getElementById('taskInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))runTask();});
 document.getElementById('apiKey').addEventListener('input',saveConfig);
 
-// ── BYOP ──
-const BYOP_APP_KEY = ''; // set your pk_ key here if you have one
+const BYOP_APP_KEY = ''; 
 
 function connectByop(){
   const params = new URLSearchParams({redirect_url: location.href});
@@ -830,16 +802,13 @@ function toggleManualKey(){
 }
 
 function getActiveKey(){
-  // BYOP key takes priority; fallback to manual input
   return window._byopKey || document.getElementById('apiKey').value.trim();
 }
 
 function checkByopRedirect(){
-  // Key comes back in URL fragment after Pollinations OAuth redirect
   const hash = new URLSearchParams(location.hash.slice(1));
   const key  = hash.get('api_key');
   if(!key) return false;
-  // Clean the fragment from URL without reload
   history.replaceState(null,'',location.pathname+location.search);
   applyByopKey(key, true);
   return true;
@@ -852,19 +821,14 @@ function applyByopKey(key, persist){
   document.getElementById('byopBtn').style.display='none';
   document.getElementById('manualKeyWrap').style.display='none';
   document.getElementById('manualToggle').style.display='none';
-  // Show masked key label
   document.getElementById('byopLabel').textContent = key.slice(0,8)+'…';
   refreshAll();
 }
 
-// Patch getActiveKey into runTask / refreshAll usage
 const _origRefreshAll = refreshAll;
-// (refreshAll already uses getActiveKey via the patched version below)
 
 loadConfig();
-// Check for BYOP redirect key in fragment first
 if(!checkByopRedirect()){
-  // Try restoring persisted BYOP key
   const saved = localStorage.getItem('duogent_byop_key');
   if(saved){ applyByopKey(saved, false); }
 }
